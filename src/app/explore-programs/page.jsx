@@ -12,6 +12,11 @@ export const metadata = {
 
 export default async function ExplorePrograms({ searchParams }) {
     const params = await searchParams;
+
+    // Simulate a brief network delay (1500ms) to ensure the sleek loading animation 
+    // and logo are visible for at least 1.5 seconds as requested, while the page loads behind.
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     if (params.access !== 'granted') {
         redirect('/');
     }
