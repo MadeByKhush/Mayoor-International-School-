@@ -15,9 +15,9 @@ const AdmissionCTA = () => {
             <div className="relative container mx-auto px-6 text-center text-white">
                 <h2 className="text-4xl font-bold">Admissions Open in Jodhpur</h2>
 
-                <p className="mt-4 max-w-2xl mx-auto">
-                    We are now accepting applications for the upcoming academic year.
-                    Take the first step towards an enriching educational journey for your child.
+                <p className="mt-4 max-w-2xl mx-auto text-sm">
+                    We are now accepting applications for the upcoming academic year. <br />
+                    Take the first step to an enriching journey for your child.
                 </p>
 
                 <div className="mt-8 flex justify-center space-x-4">

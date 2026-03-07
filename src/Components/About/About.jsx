@@ -13,15 +13,7 @@ const About = () => {
         {/* Left Text Section */}
         <SlideRight delay={0.8}>
           <div>
-            <p className="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold px-4 py-1 rounded-full text-sm tracking-wide">
-              <span className="relative flex h-3 w-3">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-80 animate-ping"></span>
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-red-600"></span>
-              </span>
-              ABOUT MAYOOR INTERNATIONAL SCHOOL
-            </p>
-
-            <h2 className="text-4xl font-bold mt-2 text-text-light-primary">
+            <h2 className="text-3xl font-bold mt-2 text-text-light-primary">
               About <span className="text-primary font-bold">Mayoor International School</span>
             </h2>
 

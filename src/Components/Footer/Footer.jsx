@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Brand / Contact Section */}
           <div>
             <div className="flex items-center space-x-3">
-              <span className="text-[1.8rem] font-bold text-primary">
+              <span className="text-[2rem] font-bold text-primary">
                 Mayoor International School
               </span>
             </div>
