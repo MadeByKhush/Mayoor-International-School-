@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
-import Loader from "@/Components/Loader";
+import Loader from "@/components/ui/Loader";
 
 export default function GalleryClient() {
     const [galleryImages, setGalleryImages] = useState([]);

@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import AdminLayout from "./AdminLayout";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import Loader from "../Components/Loader";
-import { showToast } from "../Components/Toast";
+import Loader from "../ui/Loader";
+import { showToast } from "../ui/Toast";
 
 export default function Dashboard() {
   const router = useRouter();

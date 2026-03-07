@@ -1,4 +1,4 @@
-import AdminGallery from "@/screens/AdminGallery";
+import AdminGallery from "@/components/admin/AdminGallery";
 
 export default function AdminGalleryPage() {
     return <AdminGallery />;

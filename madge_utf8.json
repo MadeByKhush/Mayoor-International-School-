@@ -1,0 +1,6 @@
+﻿[
+  "data/galleryData.js",
+  "data/programsData.js",
+  "lib/supabaseClient.js",
+  "middleware.js"
+]

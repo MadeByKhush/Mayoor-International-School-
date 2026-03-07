@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from "../../assets/logo-upscaled.webp";
-import AdmissionModal from "../AdmissionModal/AdmissionModal";
+import logo from "../../../assets/logo-upscaled.webp";
+import AdmissionModal from "../../AdmissionModal/AdmissionModal";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

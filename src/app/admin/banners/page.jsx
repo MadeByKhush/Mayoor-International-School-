@@ -1,4 +1,4 @@
-import Banners from "@/screens/Banners";
+import Banners from "@/components/admin/Banners";
 
 export default function BannersPage() {
     return <Banners />;

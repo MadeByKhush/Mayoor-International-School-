@@ -4,9 +4,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import AdminLayout from "./AdminLayout";
 import { supabase } from "@/lib/supabaseClient";
-import Loader from "../Components/Loader";
-import { showToast } from "../Components/Toast";
-import ConfirmModal from "../Components/ConfirmModal";
+import Loader from "../ui/Loader";
+import { showToast } from "../ui/Toast";
+import ConfirmModal from "../ui/ConfirmModal";
 
 export default function AdminGallery() {
     const [images, setImages] = useState([]);
