@@ -30,6 +30,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" data-theme="light">
+            <head>
+                <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+            </head>
             <body className="font-display bg-background-light dark:bg-background-dark text-text-light-primary dark:text-dark-primary transition-colors duration-300">
                 <ClientProviders>
                     <div className="overflow-x-hidden w-full max-w-full">

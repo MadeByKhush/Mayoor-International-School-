@@ -43,6 +43,13 @@ export default function AdminLayout({ children }) {
           </Link>
 
           <Link
+            href="/admin/gallery"
+            className="block p-2 rounded hover:bg-green-50"
+          >
+            Gallery
+          </Link>
+
+          <Link
             href="/admin/queries"
             className="block p-2 rounded hover:bg-green-50"
           >

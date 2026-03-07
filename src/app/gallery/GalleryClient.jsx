@@ -2,11 +2,42 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { galleryImages } from "@/data/galleryData";
+import { supabase } from "@/lib/supabaseClient";
+import Loader from "@/Components/Loader";
 
 export default function GalleryClient() {
+    const [galleryImages, setGalleryImages] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [selectedIndex, setSelectedIndex] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const { data, error } = await supabase
+                    .from("gallery_images")
+                    .select("*")
+                    .eq("is_visible", true)
+                    .order("display_order", { ascending: true })
+                    .order("created_at", { ascending: false });
+
+                if (error) throw error;
+                const formatted = (data || []).map(img => ({
+                    id: img.id,
+                    src: img.image_url,
+                    alt: "Gallery Image",
+                    width: 800,
+                    height: 800,
+                }));
+                setGalleryImages(formatted);
+            } catch (error) {
+                console.error("Error fetching images:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchImages();
+    }, []);
 
     // Swipe state for mobile navigation
     const [touchStart, setTouchStart] = useState(null);
@@ -76,25 +107,38 @@ export default function GalleryClient() {
                     <p className="text-lg text-gray-600 dark:text-gray-300">Moments Captured at Mayoor</p>
                 </div>
 
-                <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
-                    {galleryImages.map((image, index) => (
-                        <div
-                            key={image.id}
-                            className="relative overflow-hidden break-inside-avoid rounded-xl bg-gray-200 dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer"
-                            onClick={() => setSelectedIndex(index)}
-                        >
-                            <Image
-                                src={image.src}
-                                alt={image.alt}
-                                width={image.width}
-                                height={image.height}
-                                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                loading="lazy"
-                            />
-                        </div>
-                    ))}
-                </div>
+                {loading ? (
+                    <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+                        {[...Array(8)].map((_, i) => (
+                            <div key={i} className="break-inside-avoid relative overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 shadow-md animate-pulse">
+                                {/* Random heights for masonry skeleton effect */}
+                                <div className={`w-full ${i % 3 === 0 ? 'h-64' : i % 2 === 0 ? 'h-48' : 'h-80'}`}></div>
+                            </div>
+                        ))}
+                    </div>
+                ) : galleryImages.length === 0 ? (
+                    <div className="py-20 text-center text-gray-500 font-medium">No images available in the gallery.</div>
+                ) : (
+                    <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+                        {galleryImages.map((image, index) => (
+                            <div
+                                key={image.id}
+                                className="relative overflow-hidden break-inside-avoid rounded-xl bg-gray-200 dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer"
+                                onClick={() => setSelectedIndex(index)}
+                            >
+                                <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    width={image.width}
+                                    height={image.height}
+                                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                    loading="lazy"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {/* Premium Instagram-Style Lightbox Modal */}

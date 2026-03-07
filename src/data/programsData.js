@@ -10,7 +10,7 @@ export const programsData = [
             "Specialized workshops on map reading and field craft",
             "Opportunities to participate in Republic Day Parades"
         ],
-        image: "/programs/1.jpg",
+        image: "/programs/1.webp",
         imageOnLeft: false
     },
     {
@@ -24,7 +24,7 @@ export const programsData = [
             "Regular inter-school and national event exposure",
             "Dedicated sports psychology and physiotherapy support"
         ],
-        image: "/programs/2.jpg",
+        image: "/programs/2.webp",
         imageOnLeft: true
     },
     {
@@ -38,7 +38,7 @@ export const programsData = [
             "Annual science and innovation hackathons",
             "Mentorship from industry tech professionals"
         ],
-        image: "/programs/3.jpg",
+        image: "/programs/3.webp",
         imageOnLeft: false
     },
     {
@@ -52,7 +52,7 @@ export const programsData = [
             "Participation in national and international arts festivals",
             "Annual grand theatrical productions and art exhibitions"
         ],
-        image: "/programs/4.jpg",
+        image: "/programs/4.webp",
         imageOnLeft: true
     }
 ];
