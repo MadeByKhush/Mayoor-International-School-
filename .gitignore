@@ -26,3 +26,8 @@ dist-ssr
 # Env
 .env
 .env.*
+
+# Next.js
+.next
+out
+build
