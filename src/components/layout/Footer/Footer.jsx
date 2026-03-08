@@ -50,7 +50,7 @@ const Footer = () => {
             <div className="w-full h-64 md:h-72 rounded-lg overflow-hidden shadow-lg border border-gray-100">
               <iframe
                 title="School Location"
-                src="https://www.google.com/maps?q=Mayoor%20International%20School&output=embed"
+                src="https://maps.google.com/maps?q=Mayoor%20International%20School,%20Jodhpur&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
