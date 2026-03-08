@@ -26,6 +26,8 @@ const Navbar = () => {
               src={logo}
               alt="Mayoor International School Logo"
               className="h-10 w-10 sm:h-16 sm:w-16 object-contain"
+              priority
+              sizes="(max-width: 640px) 40px, 64px"
             />
             <span className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-primary whitespace-normal min-[498px]:whitespace-nowrap leading-tight">
               Mayoor <br className="block min-[498px]:hidden" />

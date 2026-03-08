@@ -133,7 +133,8 @@ export default function GalleryClient() {
                                     height={image.height}
                                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                     className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                    loading="lazy"
+                                    loading={index < 8 ? "eager" : "lazy"}
+                                    priority={index < 4}
                                 />
                             </div>
                         ))}

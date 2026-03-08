@@ -1,5 +1,13 @@
 import "@/styles/index.css";
 import ClientProviders from "@/providers/ClientProviders";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    display: "swap",
+    variable: "--font-poppins",
+});
 
 export const metadata = {
     title: "Mayoor International School, Jodhpur | CBSE School",
@@ -29,9 +37,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" data-theme="light">
+        <html lang="en" data-theme="light" className={`${poppins.variable}`}>
             <head>
-                <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.min.css" media="print" onLoad="this.media='all'" />
+                <noscript>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.min.css" />
+                </noscript>
             </head>
             <body className="font-display bg-background-light dark:bg-background-dark text-text-light-primary dark:text-dark-primary transition-colors duration-300">
                 <ClientProviders>

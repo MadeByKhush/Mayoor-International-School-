@@ -3,12 +3,13 @@ import Image from "next/image";
 const CurriculumCard = ({ image, title, desc }) => {
   return (
     <div className="group relative flex flex-col items-center swoosh-container">
-      <div className="relative mb-4 z-10">
+      <div className="relative mb-4 z-10 w-40 h-40">
         <Image
           src={image}
           alt={title}
-          className="h-40 w-40 object-cover rounded-full  border-4 border-amber-300 
-          shadow-lg transition-transform duration-300 group-hover:scale-110"
+          fill
+          sizes="(max-width: 640px) 160px, 160px"
+          className="object-cover rounded-full border-4 border-amber-300 shadow-lg transition-transform duration-300 group-hover:scale-110"
         />
       </div>
 

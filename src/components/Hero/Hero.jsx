@@ -27,7 +27,14 @@ const Hero = () => {
                 playsInline
             ></video> */}
 
-            <Image src={image} alt="Mayoor International School campus in Jodhpur" className="absolute top-0 left-0 w-full h-full object-cover min-w-[120%] min-h-[120%] -translate-x-[-15px] -translate-y-[130px]" priority />
+            <Image
+                src={image}
+                alt="Mayoor International School campus in Jodhpur"
+                className="absolute top-0 left-0 w-full h-full object-cover min-w-[120%] min-h-[120%] -translate-x-[-15px] -translate-y-[130px]"
+                priority
+                fetchPriority="high"
+                sizes="100vw"
+            />
 
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-black/10"></div>

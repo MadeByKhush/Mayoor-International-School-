@@ -51,6 +51,7 @@ const About = () => {
               src={image}
               alt="Students at Mayoor International School"
               className="w-full h-full object-cover scale-[1.30] -translate-y-[25px]"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </SlideLeft>
