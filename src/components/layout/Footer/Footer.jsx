@@ -1,4 +1,5 @@
 import React from "react";
+import { MapPin, Phone, Mail, Facebook, Youtube, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -25,17 +26,17 @@ const Footer = () => {
               <h3 className="font-bold text-text-light-primary mb-4">Contact Us</h3>
               <ul className="mt-5 space-y-4 text-sm text-text-light-secondary">
                 <li className="flex items-start">
-                  <i className="ri-map-pin-fill text-xl mr-3 text-primary mt-0.5"></i>
+                  <MapPin size={20} className="mr-3 text-primary mt-0.5 shrink-0" />
                   <span>Sector 8 KBHB, Jodhpur (Raj.), 342005</span>
                 </li>
 
                 <li className="flex items-center">
-                  <i className="ri-phone-fill text-xl mr-3 text-primary"></i>
+                  <Phone size={20} className="mr-3 text-primary shrink-0" />
                   <span>+91 9166929992</span>
                 </li>
 
                 <li className="flex items-center">
-                  <i className="ri-mail-fill text-xl mr-3 text-primary"></i>
+                  <Mail size={20} className="mr-3 text-primary shrink-0" />
                   <span>mayoorinternationalschool@gmail.com</span>
                 </li>
               </ul>
@@ -67,13 +68,13 @@ const Footer = () => {
 
           <div className="flex items-center space-x-5 mt-4 sm:mt-0">
             <a href="https://www.facebook.com/profile.php?id=100064094377046" aria-label="Facebook" className="text-gray-400 hover:text-blue-600 transition-colors duration-300">
-              <i className="ri-facebook-circle-fill text-2xl"></i>
+              <Facebook size={24} />
             </a>
             <a href="https://www.youtube.com/@mayoorinternationalschoolj5474" aria-label="YouTube" className="text-gray-400 hover:text-red-500 transition-colors duration-300">
-              <i className="ri-youtube-fill text-2xl"></i>
+              <Youtube size={24} />
             </a>
             <a href="https://www.instagram.com/mayoor_international_school/" aria-label="Instagram" className="text-gray-400 hover:text-pink-500 transition-colors duration-300">
-              <i className="ri-instagram-line text-2xl"></i>
+              <Instagram size={24} />
             </a>
           </div>
         </div>

@@ -39,7 +39,6 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" data-theme="light" className={`${poppins.variable}`}>
             <head>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" />
             </head>
             <body className="font-display bg-background-light dark:bg-background-dark text-text-light-primary dark:text-dark-primary transition-colors duration-300">
                 <ClientProviders>
