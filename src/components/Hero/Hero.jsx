@@ -31,9 +31,9 @@ const Hero = () => {
                 src={image}
                 alt="Mayoor International School campus in Jodhpur"
                 className="absolute top-0 left-0 w-full h-full object-cover min-w-[120%] min-h-[120%] -translate-x-[-15px] -translate-y-[130px]"
-                priority
+                priority={true}
                 fetchPriority="high"
-                sizes="100vw"
+                sizes="(max-width: 768px) 100vw, 100vw"
             />
 
             {/* Dark Overlay */}

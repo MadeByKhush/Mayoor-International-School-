@@ -11,6 +11,10 @@ export default function GalleryClient() {
     const [selectedIndex, setSelectedIndex] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
 
+    // Infinite Scroll State
+    const [visibleCount, setVisibleCount] = useState(12);
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+
     useEffect(() => {
         const fetchImages = async () => {
             try {
@@ -38,6 +42,34 @@ export default function GalleryClient() {
         };
         fetchImages();
     }, []);
+
+    // Intersection Observer for Infinite Scroll
+    const observerTarget = React.useRef(null);
+
+    useEffect(() => {
+        const currentTarget = observerTarget.current;
+        if (!currentTarget) return;
+
+        const observer = new IntersectionObserver(
+            entries => {
+                const first = entries[0];
+                if (first.isIntersecting && visibleCount < galleryImages.length) {
+                    setIsLoadingMore(true);
+                    setTimeout(() => {
+                        setVisibleCount(prev => prev + 12);
+                        setIsLoadingMore(false);
+                    }, 500); // Small delay for smooth UX
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(currentTarget);
+
+        return () => {
+            if (currentTarget) observer.unobserve(currentTarget);
+        };
+    }, [observerTarget, visibleCount, galleryImages.length]);
 
     // Swipe state for mobile navigation
     const [touchStart, setTouchStart] = useState(null);
@@ -70,7 +102,7 @@ export default function GalleryClient() {
             });
             setTimeout(() => setIsAnimating(false), 50);
         }, 150); // wait for fade out
-    }, []);
+    }, [galleryImages.length]);
 
     const handleNext = useCallback(() => changeImage(1), [changeImage]);
     const handlePrev = useCallback(() => changeImage(-1), [changeImage]);
@@ -119,26 +151,35 @@ export default function GalleryClient() {
                 ) : galleryImages.length === 0 ? (
                     <div className="py-20 text-center text-gray-500 font-medium">No images available in the gallery.</div>
                 ) : (
-                    <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
-                        {galleryImages.map((image, index) => (
-                            <div
-                                key={image.id}
-                                className="relative overflow-hidden break-inside-avoid rounded-xl bg-gray-200 dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer"
-                                onClick={() => setSelectedIndex(index)}
-                            >
-                                <Image
-                                    src={image.src}
-                                    alt={image.alt}
-                                    width={image.width}
-                                    height={image.height}
-                                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                    loading={index < 8 ? "eager" : "lazy"}
-                                    priority={index < 4}
-                                />
+                    <>
+                        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+                            {galleryImages.slice(0, visibleCount).map((image, index) => (
+                                <div
+                                    key={image.id}
+                                    className="relative overflow-hidden break-inside-avoid rounded-xl bg-gray-200 dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer"
+                                    onClick={() => setSelectedIndex(index)}
+                                >
+                                    <Image
+                                        src={image.src}
+                                        alt={image.alt}
+                                        width={image.width}
+                                        height={image.height}
+                                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                        loading={index < 8 ? "eager" : "lazy"}
+                                        priority={index < 4}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Intersection Observer Target */}
+                        {visibleCount < galleryImages.length && (
+                            <div ref={observerTarget} className="flex justify-center items-center py-10">
+                                {isLoadingMore && <Loader />}
                             </div>
-                        ))}
-                    </div>
+                        )}
+                    </>
                 )}
             </div>
 
