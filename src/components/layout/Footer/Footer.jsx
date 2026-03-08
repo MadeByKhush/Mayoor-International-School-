@@ -49,9 +49,10 @@ const Footer = () => {
             <div className="w-full h-64 md:h-72 rounded-lg overflow-hidden shadow-lg border border-gray-100">
               <iframe
                 title="School Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.6539827048186!2d73.03051827524648!3d26.20793197707422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418bafcfffffff%3A0xdbd9241fcadd7f59!2sMayoor%20International%20Senior%20Secondary%20School%20kudi%20bhagtasni%20housing%20board%20jodhpur!5e0!3m2!1sen!2sin!4v1763278612786!5m2!1sen!2sin"
+                src="https://www.google.com/maps?q=Mayoor%20International%20School&output=embed"
                 width="100%"
                 height="100%"
+                style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
